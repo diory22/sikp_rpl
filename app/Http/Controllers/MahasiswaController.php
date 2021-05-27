@@ -30,7 +30,8 @@ class MahasiswaController extends Controller
             'pimpinan' => $request->pimpinan,
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
-            'fax' => $request->fax
+            'fax' => $request->fax,
+            'status' => 0
             //'dokumen' => $request->dokumen
         ]);
         return redirect('suratketerangan')->with('status', 'Berhasil ditambahkan!');
@@ -90,7 +91,8 @@ class MahasiswaController extends Controller
             'pimpinan' => $request->pimpinan,
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
-            'fax' => $request->fax
+            'fax' => $request->fax,
+            'status' => 0
             //'dokumen' => $request->dokumen
         ]);
         return redirect('prakp')->with('status', 'Berhasil ditambahkan!');
@@ -130,7 +132,7 @@ class MahasiswaController extends Controller
 
     public function tampilkp()
     {
-        $prakp = DB::table('kp')->get();
+        $kp = DB::table('kp')->get();
 
         return view('mahasiswa.tampilkp',['kp' => $kp]);
     }
@@ -153,7 +155,10 @@ class MahasiswaController extends Controller
             'pimpinan' => $request->pimpinan,
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
-            'fax' => $request->fax
+            'fax' => $request->fax,
+            //'penguji' => $request->penguji,
+            //'dospem' ->$request->dospem,
+            'status' => 0
             //'dokumen' => $request->dokumen
         ]);
         return redirect('kp')->with('status', 'Berhasil ditambahkan!');
@@ -161,7 +166,7 @@ class MahasiswaController extends Controller
     }
     public function editkp($id)
     {
-        $prakp = DB::table('kp')->where('id',$id)->first();
+        $kp = DB::table('kp')->where('id',$id)->first();
         return view('mahasiswa.editkp', compact('kp'));
     }
     public function editProseskp(Request $request, $id)
@@ -188,4 +193,9 @@ class MahasiswaController extends Controller
         DB::table('kp')->where('id',$id)->delete();
         return redirect('kp')->with('status', 'Berhasil dihapus!');
     } 
+    public function tampilujian()
+    {
+        $ujian = DB::table('kp')->where('status', '=', '1')->get();
+        return view('mahasiswa.ujian',['kp' => $ujian]);
+    }
 }

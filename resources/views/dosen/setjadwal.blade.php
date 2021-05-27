@@ -35,21 +35,28 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ url ('home') }}"></i>Dashboard </a>
+                <li>
+                        <a href="{{ url ('dosen') }}"></i>Dashboard </a>
                     </li>
                     <li>
-                        <a href="{{ url ('suratketerangan') }}">Pengajuan Surat Keterangan</a>
+                        <a href="{{ url ('dosen/suratketerangan') }}">Verifikasi Pengajuan Surat Keterangan</a>
                     </li>
                     <li>
-                        <a href="{{ url ('prakp') }}">Pengajuan Pra KP </a>
+                        <a href="{{ url ('dosen/prakp') }}">Verifikasi Pengajuan Pra KP </a>
                     </li>
                     <li>
-                        <a href="{{ url ('kp') }}">Pengajuan KP </a>
+                        <a href="{{ url ('dosen/kp') }}">Verifikasi Pengajuan KP</a>
                     </li>
                     <li>
-                        <a href="{{ url ('ujian') }}">Jadwal Ujian </a>
+                        <a href="{{ url ('dosen/ujian') }}">Jadwal Ujian</a>
                     </li>
+                    <li>
+                        <a href="{{ url ('dosen/dafregis') }}">Daftar Registrasi </a>
+                    </li>
+                    <li>
+                        <a href="{{ url ('dosen/batas') }}">Batas Pelaksanaan KP </a>
+                    </li>
+
                     </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -182,7 +189,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1>Jadwal Ujian</h1>
                     </div>
                 </div>
             </div>
@@ -200,7 +207,73 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
-           
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="pull-left">
+                        <strong>Set Jadwal Ujian</strong>
+                    </div>
+                    <div class="pull-right">
+                        <!--<a href="{{ url('mahasiswa/tambah') }}" class="btn btn-secondary btn-sm">
+                            <i class="fa fa-plus"></i> Add
+                        </a> -->
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-4 offset-md-4">
+                        <form action="{{ url('dosen/'.$kp->id) }}" method="post">
+                        @method('patch')
+                        @csrf
+            <div class="form-group">
+            <label for="exampleFormControlInput1">NIM</label>
+            <input type="text" class="form-control" name="nim" id="nim" readonly value="{{ $kp->nim }}"> 
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Tahun</label>
+            <input type="number" class="form-control" name="tahun" id="tahun" readonly value="{{ $kp->tahun }}">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Judul KP</label>
+            <input type="text" class="form-control" name="judul" id="judul" readonly value="{{ $kp->judul }}">
+        </div>
+        <!--<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Judul KP</label>
+  <textarea name ="judul" class="form-control" id="exampleFormControlTextarea1" rows="3" readonly value="{{ $kp->judul }}"></textarea>
+</div> 
+<div class="form-group">
+            <label for="exampleFormControlInput1">Status</label>
+            <input type="text" class="form-control" name="status" id="status" readonly value="{{ $kp->status }}">
+        </div> -->
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Dosen Pembimbing</label>
+            <input type="text" class="form-control" name="dospem" id="dospem" value="{{ $kp->dospem }}" autofocus required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Penguji</label>
+            <input type="text" class="form-control" name="penguji" id="penguji" value="{{ $kp->penguji }}" autofocus required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Ruang</label>
+            <input type="text" class="form-control" name="ruang" id="ruang" value="{{ $kp->ruang }}" autofocus required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Tgl Ujian</label>
+            <input type="date" class="form-control" name="tgl_ujian" id="tgl_ujian" data-date-format="DD/MMM/YYYY" placeholder="dd/mm/yyyy" value="{{ $kp->tgl_ujian }}" autofocus required>
+        </div>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        </form>
+            </div>
+            </div>
+
+            </div>
+        </div>
+
+
+        
+                    
+
           
             </div><!-- .animated -->
         </div><!-- .content -->

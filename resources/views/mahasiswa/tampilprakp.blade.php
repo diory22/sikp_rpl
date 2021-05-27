@@ -224,11 +224,9 @@
                         <th>NIM</th>
                         <th>Semester</th>
                         <th>Lembaga</th>
-                        <th>Pimpinan</th>
-                        <th>No.Telp</th>
-                        <th>Alamat</th>
-                        <th>Fax</th>
-                       <!-- <th>Status</th> -->
+                        <th>Judul</th>
+                        <!--<th>Pembimbing</th> -->
+                       <th>Status</th>
                         
                     </tr>
                 </thead>
@@ -239,10 +237,14 @@
                             <td>{{ $item->nim }}</td>
                             <td>{{ $item->semester }}</td>
                             <td>{{ $item->lembaga }}</td>
-                            <td>{{ $item->pimpinan }}</td>
-                            <td>{{ $item->no_telp }}</td>
-                            <td>{{ $item->alamat }}</td>
-                            <td>{{ $item->fax }}</td>
+                            <td>{{ $item->judul }}</td>
+                            <td>
+                                    @if ($item->status == 0)
+                                        Belum Disetujui
+                                    @else
+                                        Sudah Disetujui
+                                    @endif
+                                </td>
                             <td class="text-center">
                                 <a href="{{ url('prakp/editprakp/' .$item->id) }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-pencil"></i>

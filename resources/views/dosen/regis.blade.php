@@ -35,21 +35,28 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ url ('home') }}"></i>Dashboard </a>
+                <li>
+                        <a href="{{ url ('dosen') }}"></i>Dashboard </a>
                     </li>
                     <li>
-                        <a href="{{ url ('suratketerangan') }}">Pengajuan Surat Keterangan</a>
+                        <a href="{{ url ('dosen/suratketerangan') }}">Verifikasi Pengajuan Surat Keterangan</a>
                     </li>
                     <li>
-                        <a href="{{ url ('prakp') }}">Pengajuan Pra KP </a>
+                        <a href="{{ url ('dosen/prakp') }}">Verifikasi Pengajuan Pra KP </a>
                     </li>
                     <li>
-                        <a href="{{ url ('kp') }}">Pengajuan KP </a>
+                        <a href="{{ url ('dosen/kp') }}">Verifikasi Pengajuan KP</a>
                     </li>
                     <li>
-                        <a href="{{ url ('ujian') }}">Jadwal Ujian </a>
+                        <a href="{{ url ('dosen/ujian') }}">Jadwal Ujian</a>
                     </li>
+                    <li>
+                        <a href="{{ url ('dosen/dafregis') }}">Daftar Registrasi </a>
+                    </li>
+                    <li>
+                        <a href="{{ url ('dosen/batas') }}">Batas Pelaksanaan KP </a>
+                    </li>
+
                     </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -182,7 +189,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1>Daftar Registrasi</h1>
                     </div>
                 </div>
             </div>
@@ -200,7 +207,65 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
+            @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+            <div class="card">
+                <div class="card-header">
+                    <!--<div class="pull-left">
+                        <strong>Verifikasi Pengajuan Surat Keterangan</strong>
+                    </div> -->
+                    <!--<div class="pull-right">
+                        <a href="{{ url('dosen/viewsk') }}" class="btn btn-primary btn-sm">
+                            <i class=></i> View Verifikasi
+                        </a>
+                    </div> -->
+                </div>
+                <div class="card-body table responsive">
+                    <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>NIM</th>
+                        <th>Judul KP</th>
+                        <th>Penguji</th>
+                        <th>Tanggal Ujian</th>
+                       <th>Status</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($kp as $item)
+                        <tr>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $item->nim }}</td>
+                            <td>{{ $item->judul }}</td>
+                            <td>{{ $item->penguji }}</td>
+                            <td>{{ $item->tgl_ujian }}</td>
+                            <td> 
+                                @if($item->status == 0)
+                                    Belum Disetujui
+                                @else
+                                    Sudah Disetujui
+                                @endif
+                            </td>
+                            <!--<td>{{ $item->status }}</td> -->
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            </div>
            
+            </div>
+
+            </div>
+        </div>
+
+        
+                    
+
           
             </div><!-- .animated -->
         </div><!-- .content -->

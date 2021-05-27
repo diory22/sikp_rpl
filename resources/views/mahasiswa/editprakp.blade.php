@@ -221,18 +221,15 @@
                         @csrf
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Semester</label>
-                                    <select class="form-control" name="semester" id="semester">
-            <option value="Gasal">Gasal</option>
-            <option value="Genap">Genap</option>
-            {{ $prakp->semester }} </select>
+                                    <input type ="text" class="form-control" name="semester" id="semester" readonly value = "{{ $prakp->semester }}">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Tahun</label>
-            <input type="number" class="form-control" name="tahun" id="tahun" value="{{ $prakp->tahun }}" autofocus required>
+            <input type="number" class="form-control" name="tahun" id="tahun" readonly value="{{ $prakp->tahun }}">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">NIM</label>
-            <input type="text" class="form-control" name="nim" id="nim" value="{{ $prakp->nim }}" autofocus required> 
+            <input type="text" class="form-control" name="nim" id="nim" readonly value="{{ $prakp->nim }}"> 
         </div>
         <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Judul KP</label>
@@ -267,7 +264,7 @@
             <input type="text" class="form-control" name="fax" id="fax" value="{{ $prakp->fax }}" autofocus required>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Permohonan Surat Keterangan (PDF Scan)</label>
+            <label for="exampleFormControlInput1">Dokumen</label>
             <input type="file" class="form-control" name="dokumen" id="dokumen"  autofocus required>
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>

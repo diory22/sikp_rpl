@@ -35,20 +35,14 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ url ('home') }}"></i>Dashboard </a>
+                <li>
+                        <a href="{{ url ('admin') }}"></i>Dashboard </a>
                     </li>
                     <li>
-                        <a href="{{ url ('suratketerangan') }}">Pengajuan Surat Keterangan</a>
+                        <a href="{{ url ('admin/dafbimbingan') }}">Daftar Bimbingan</a>
                     </li>
                     <li>
-                        <a href="{{ url ('prakp') }}">Pengajuan Pra KP </a>
-                    </li>
-                    <li>
-                        <a href="{{ url ('kp') }}">Pengajuan KP </a>
-                    </li>
-                    <li>
-                        <a href="{{ url ('ujian') }}">Jadwal Ujian </a>
+                        <a href="{{ url ('admin/jadwal') }}">Jadwal Ujian </a>
                     </li>
                     </ul>
             </div><!-- /.navbar-collapse -->
@@ -200,7 +194,7 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
-           
+            isi home
           
             </div><!-- .animated -->
         </div><!-- .content -->

@@ -254,7 +254,7 @@
             <input type="text" class="form-control" name="fax" id="fax" autofocus required>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Permohonan Surat Keterangan (PDF Scan)</label>
+            <label for="exampleFormControlInput1">Dokumen</label>
             <input type="file" class="form-control" name="dokumen" id="dokumen" autofocus required>
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>

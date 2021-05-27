@@ -35,21 +35,16 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ url ('home') }}"></i>Dashboard </a>
+                <li>
+                        <a href="{{ url ('admin') }}"></i>Dashboard </a>
                     </li>
                     <li>
-                        <a href="{{ url ('suratketerangan') }}">Pengajuan Surat Keterangan</a>
+                        <a href="{{ url ('admin/dafbimbingan') }}">Daftar Bimbingan</a>
                     </li>
                     <li>
-                        <a href="{{ url ('prakp') }}">Pengajuan Pra KP </a>
+                        <a href="{{ url ('admin/jadwal') }}">Jadwal Ujian </a>
                     </li>
-                    <li>
-                        <a href="{{ url ('kp') }}">Pengajuan KP </a>
-                    </li>
-                    <li>
-                        <a href="{{ url ('ujian') }}">Jadwal Ujian </a>
-                    </li>
+                    
                     </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -182,7 +177,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1>Daftar Bimbingan</h1>
                     </div>
                 </div>
             </div>
@@ -200,7 +195,65 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
+            @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+            <div class="card">
+                <div class="card-header">
+                    <!--<div class="pull-left">
+                        <strong>Verifikasi Pengajuan Surat Keterangan</strong>
+                    </div> -->
+                    <!--<div class="pull-right">
+                        <a href="{{ url('dosen/viewsk') }}" class="btn btn-primary btn-sm">
+                            <i class=></i> View Verifikasi
+                        </a>
+                    </div> -->
+                </div>
+                <div class="card-body table responsive">
+                    <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>NIM</th>
+                        <th>Judul KP</th>
+                        <th>Lembaga</th>
+                        <th>Tanggal Ujian</th>
+                       <!--<th>Status</th> -->
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($kp as $item)
+                        <tr>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $item->nim }}</td>
+                            <td>{{ $item->judul }}</td>
+                            <td>{{ $item->lembaga }}</td>
+                            <td>{{ $item->tgl_ujian }}</td>
+                            <!--<td> 
+                                @if($item->status == 0)
+                                    Belum Disetujui
+                                @else
+                                    Sudah Disetujui
+                                @endif
+                            </td> -->
+                            <!--<td>{{ $item->status }}</td> -->
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            </div>
            
+            </div>
+
+            </div>
+        </div>
+
+        
+                    
+
           
             </div><!-- .animated -->
         </div><!-- .content -->

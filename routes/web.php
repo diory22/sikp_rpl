@@ -41,3 +41,34 @@ Route::post('kp','MahasiswaController@tambahProseskp');
 Route::get('kp/editkp/{id}','MahasiswaController@editkp');
 Route::patch('kp/{id}','MahasiswaController@editProseskp');
 Route::delete('kp/{id}','MahasiswaController@deletekp');
+
+Route::get('ujian','MahasiswaController@tampilujian');
+
+
+Route::get('dosen',function () {
+    return view('dosen');
+});
+Route::get('dosen/suratketerangan','DosenController@tampil');
+Route::get('dosen/prosessetujuisk/{any:}', 'DosenController@prosessetujuisk');
+Route::get('dosen/prosesbatalsk/{any:}', 'DosenController@prosesbatalsk');
+Route::get('dosen/prakp','DosenController@tampilprakp');
+Route::get('dosen/prosessetujuiprakp/{any:}', 'DosenController@prosessetujuiprakp');
+Route::get('dosen/prosesbatalprakp/{any:}', 'DosenController@prosesbatalprakp');
+Route::get('dosen/kp','DosenController@tampilkp');
+Route::get('dosen/prosessetujuikp/{any:}', 'DosenController@prosessetujuikp');
+Route::get('dosen/prosesbatalkp/{any:}', 'DosenController@prosesbatalkp');
+Route::get('dosen/ujian', 'DosenController@jadwal');
+//Route::get('dosen/setjadwal', 'DosenController@setjadwal');
+//Route::patch('ujian{id}', 'DosenController@setjadwalProses');
+//Route::get('/dosen/prosessetjadwal', 'DosenController@setjadwal');
+Route::get('dosen/ujian/setjadwal/{id}','DosenController@setjadwal');
+Route::patch('dosen/{id}','DosenController@setProses');
+Route::get('/dosen/batas', 'DosenController@bataskp');
+Route::get('/dosen/prosesbataskp', 'DosenController@prosesbataskp');
+Route::get('dosen/dafregis','DosenController@regiskp');
+
+Route::get('admin',function () {
+    return view('admin');
+});
+Route::get('admin/dafbimbingan','AdminController@bimbingan');
+Route::get('admin/jadwal','AdminController@jadwal');

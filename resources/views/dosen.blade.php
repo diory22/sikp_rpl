@@ -36,19 +36,25 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{ url ('home') }}"></i>Dashboard </a>
+                        <a href="{{ url ('dosen') }}"></i>Dashboard </a>
                     </li>
                     <li>
-                        <a href="{{ url ('suratketerangan') }}">Pengajuan Surat Keterangan</a>
+                        <a href="{{ url ('dosen/suratketerangan') }}">Verifikasi Pengajuan Surat Keterangan</a>
                     </li>
                     <li>
-                        <a href="{{ url ('prakp') }}">Pengajuan Pra KP </a>
+                        <a href="{{ url ('dosen/prakp') }}">Verifikasi Pengajuan Pra KP </a>
                     </li>
                     <li>
-                        <a href="{{ url ('kp') }}">Pengajuan KP </a>
+                        <a href="{{ url ('dosen/kp') }}">Verifikasi Pengajuan KP</a>
                     </li>
                     <li>
-                        <a href="{{ url ('ujian') }}">Jadwal Ujian </a>
+                        <a href="{{ url ('dosen/ujian') }}">Jadwal Ujian</a>
+                    </li>
+                    <li>
+                        <a href="{{ url ('dosen/dafregis') }}">Daftar Registrasi </a>
+                    </li>
+                    <li>
+                        <a href="{{ url ('dosen/batas') }}">Batas Pelaksanaan KP </a>
                     </li>
                     </ul>
             </div><!-- /.navbar-collapse -->
@@ -200,7 +206,7 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
-           
+            isi home
           
             </div><!-- .animated -->
         </div><!-- .content -->

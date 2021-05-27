@@ -182,7 +182,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1>Jadwal Ujian</h1>
                     </div>
                 </div>
             </div>
@@ -200,7 +200,72 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
-           
+            @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+            <div class="card">
+                <div class="card-header">
+                    <div class="pull-left">
+                        <strong>Daftar Ujian</strong>
+                    </div>
+                    <!--<div class="pull-right">
+                        <a href="{{ url('suratketerangan/tambah') }}" class="btn btn-success btn-sm">
+                            <i class="fa fa-plus"></i> Add
+                        </a>
+                    </div> -->
+                </div>
+                <div class="card-body table responsive">
+                    <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>NIM</th>
+                        <th>Tahun</th>
+                        <th>Judul KP</th>
+                        <th>Dosen Pembimbing</th>
+                        <th>Penguji</th>
+                        <th>Tgl Ujian</th>
+                      
+                       
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($kp as $item)
+                        <tr>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $item->nim }}</td>
+                            <td>{{ $item->tahun }}</td>
+                            <td>{{ $item->judul }}</td>
+                            <td>{{ $item->dospem }}</td>
+                            <td>{{ $item->penguji }}</td>
+                            <td>{{ $item->tgl_ujian}}</td>
+                            
+                            <!--<td class="text-center">
+                                <a href="{{ url('suratketerangan/edit/' .$item->id) }}" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <form action="{{ url('suratketerangan/' .$item->id) }}" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                                    @method('delete')
+                                    @csrf
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button> -->
+                        </tr> 
+                    @endforeach
+                </tbody>
+            </table>
+            </div>
+            </div>
+
+            </div>
+        </div>
+
+        
+                    
+
           
             </div><!-- .animated -->
         </div><!-- .content -->
