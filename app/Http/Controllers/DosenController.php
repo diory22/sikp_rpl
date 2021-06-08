@@ -4,85 +4,98 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class DosenController extends Controller
 {
+        public function postlogin1 (Request $request){
+            //dd($request->all());
+            if (Auth::attempt($request->only('email','password'))){
+                return redirect('dosen');
+            }
+            return redirect ('loginkoor');
+        }
+    
+        public function logout1 (Request $request){
+            Auth::logout();
+            return redirect('loginkoor');
+        }
+    
+    
     public function tampil()
     {
-        $sk= DB::table('suratketerangan')->where('status', '=', '0')->get();
+        $sk= DB::table('suratketerangan')->where('status', 'Belum diverifikasi')->get();
 
         //return $suratketerangan;
         return view('dosen.tampil',['sk' => $sk]);
     }
-    public function prosessetujuisk($id)
+    public function verifikasi($id)
     {
-    	DB::table('suratketerangan')->where('id', '=', $id)->update(['status' => 1]);
-    	return redirect('dosen/suratketerangan');
+        $sk = DB::table('suratketerangan')->where('id',$id)->first();
+        //$dosen = DB::table('dosen')->get();
+        return view('dosen.verifikasisk', compact('sk'));
     }
-    public function prosesbatalsk($id)
+    public function verifikasiProses(Request $request, $id)
     {
-    	DB::table('suratketerangan')->where('id', '=', $id)->update(['status' => 0]);
-    	return redirect('dosen/suratketerangan');
+        DB::table('suratketerangan')->where('id',$id)
+        ->update([
+            'status' => $request->status
+        ]);
+        return redirect('dosen/suratketerangan')->with('status', 'Verifikasi Berhasil!');
+
     }
     public function tampilprakp()
     {
-        $prakp = DB::table('prakp')->where('status', '=', '0')->get();
+        $prakp = DB::table('prakp')->where('status', 'Belum diverifikasi')->get();
         return view('dosen.tampilprakp',['prakp' => $prakp]);
     }
-    public function prosessetujuiprakp($id)
+    public function verifikasiprakp($id)
     {
-    	DB::table('prakp')->where('id', '=', $id)->update(['status' => 1]);
-    	return redirect('dosen/prakp');
+        $prakp = DB::table('prakp')->where('id',$id)->first();
+        //$dosen = DB::table('dosen')->get();
+        return view('dosen.verifikasiprakp', compact('prakp'));
     }
-    public function prosesbatalprakp($id)
+    public function verifprakpProses(Request $request, $id)
     {
-    	DB::table('prakp')->where('id', '=', $id)->update(['status' => 0]);
-    	return redirect('dosen/prakp');
+        DB::table('prakp')->where('id',$id)
+        ->update([
+            'status' => $request->status
+        ]);
+        return redirect('dosen/prakp')->with('status', 'Verifikasi Berhasil!');
+
     }
     public function tampilkp()
     {
-        $kp = DB::table('kp')->where('status', '=', '0')->get();
+        $kp = DB::table('kp')->where('status', 'Belum diverifikasi')->get();
         return view('dosen.tampilkp',['kp' => $kp]);
     }
-    public function prosessetujuikp($id)
+    public function verifikasikp($id)
     {
-    	DB::table('kp')->where('id', '=', $id)->update(['status' => 1]);
-    	return redirect('dosen/kp');
+        $kp = DB::table('kp')->where('id',$id)->first();
+        //$dosen = DB::table('dosen')->get();
+        return view('dosen.verifikasikp', compact('kp'));
     }
-    public function prosesbatalkp($id)
+    public function verifkpProses(Request $request, $id)
     {
-    	DB::table('kp')->where('id', '=', $id)->update(['status' => 0]);
-    	return redirect('dosen/kp');
+        DB::table('kp')->where('id',$id)
+        ->update([
+            'status' => $request->status
+        ]);
+        return redirect('dosen/kp')->with('status', 'Verifikasi Berhasil!');
+
     }
+    
     public function jadwal()
     {
-        $kp = DB::table('kp')->where('status', '=', '1')->get();
+        $kp = DB::table('kp')->where('status_ujian', 'Diterima')->get();
     	//$dosen = DB::table('dosen')->get();
     	return view('dosen.jadwal', ['kp' => $kp]); //'dosen' => $dosen]);
     }
-    //public function setjadwal()
-    //{
-    //    return view('dosen.setjadwal');
-    //}
-    //public function setjadwalProses(Request $request, $id)
-    //{
-    //    DB::table('kp')->where('id',$id)
-    //    ->update([
-    //        'nim' => $request->nim,
-    //        'tahun' => $request->tahun,
-    //        'judul' => $request->judul,
-    //        'status' => $request->status,
-    //        'dospem' => $request->dospem,
-    //        'penguji' => $request->penguji,
-    //        'ruang' => $request->ruang,
-    //        'tgl_ujian' => $request->tgl_ujian
-    //    ]);
-    //    return redirect('dosen/ujian')->with('status', 'Set Jadwal Ujian Berhasil!');
-
-    //}
+    
     public function setjadwal($id)
     {
         $kp = DB::table('kp')->where('id',$id)->first();
+        $dosen = DB::table('dosen')->get();
         return view('dosen.setjadwal', compact('kp'));
     }
     public function setProses(Request $request, $id)
@@ -92,7 +105,6 @@ class DosenController extends Controller
             'nim' => $request->nim,
             'tahun' => $request->tahun,
             'judul' => $request->judul,
-            //'status' => $request->status,
             'dospem' => $request->dospem,
             'penguji' => $request->penguji,
             'ruang' => $request->ruang,
@@ -103,7 +115,7 @@ class DosenController extends Controller
     }
     public function bataskp()
     {
-        $kp = DB::table('kp')->where('status', '=', '1')->get();
+        $kp = DB::table('kp')->where('status', 'Diterima')->get();
     	//$dosen = DB::table('dosen')->get();
     	return view('dosen.bataskp', ['kp' => $kp]); //'dosen' => $dosen]);
     }
@@ -111,9 +123,10 @@ class DosenController extends Controller
     {
     	$get_batas = DB::table('kp')->where('id', '=', $request->id)->count();
     	if ($get_batas > 0) {
-    		DB::table('kp')->where('id', '=', $request->id)->update(['tgl_batas' => $request->tgl_batas]);
+    		DB::table('kp')->where('id', '=', $request->id)->update(['tgl_mulai' => $request->tgl_mulai, 'tgl_batas' => $request->tgl_batas]);
     	}else{
     		DB::table('kp')->insert([
+                'tgl_mulai' => $request->tgl_mulai,
     			'tgl_batas' => $request->tgl_batas,
     			'id' => $request->id
     		]);
@@ -123,7 +136,8 @@ class DosenController extends Controller
     }
     public function regiskp()
     {
-    	$kp = DB::table('kp')->where('status', '=', '1')->get();
+    	$kp = DB::table('kp')->where('status', 'Diterima')->get();
     	return view('dosen.regis', ['kp' => $kp]);
     }
+    
 }

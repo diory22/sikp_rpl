@@ -148,7 +148,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                     <!--<li class="nav-item"> -->
-                    <a class="nav-link" aria-current="page" href="/mhs/logout">Logout</a>
+                    <a class="nav-link" aria-current="page" href="{{route('logout1')}}">Logout</a>
                         <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('style/images/user.jpg') }}" alt="User">
                         </a>
@@ -245,15 +245,33 @@
 <div class="form-group">
             <label for="exampleFormControlInput1">Status</label>
             <input type="text" class="form-control" name="status" id="status" readonly value="{{ $kp->status }}">
-        </div> -->
+        </div> 
         <div class="form-group">
             <label for="exampleFormControlInput1">Dosen Pembimbing</label>
             <input type="text" class="form-control" name="dospem" id="dospem" value="{{ $kp->dospem }}" autofocus required>
+        </div> -->
+        <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Dospem</label>
+                                    <select class="form-control" name="dospem" id="dospem">
+            <option value="Andhika Galuh">Andhika Galuh</option>
+            <option value="Argo Wibowo">Argo Wibowo</option>
+            </select>
         </div>
         <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Penguji</label>
+                                    <select class="form-control" name="penguji" id="penguji">
+            <option value="Umi Proboyekti">Umi Proboyekti</option>
+            <option value="Budi Sutedjo">Budi Sutedjo</option>
+            <option value="Yetli Oslan">Yetli Oslan</option>
+            <option value="Lussy Ernawanati">Lussy Ernawanati</option>
+            <option value="Gabriel Indra">Gabriel Indra</option>
+            <option value="Katon Wijana">Katon Wijana</option>
+            </select>
+        </div>
+        <!--<div class="form-group">
             <label for="exampleFormControlInput1">Penguji</label>
             <input type="text" class="form-control" name="penguji" id="penguji" value="{{ $kp->penguji }}" autofocus required>
-        </div>
+        </div> -->
         <div class="form-group">
             <label for="exampleFormControlInput1">Ruang</label>
             <input type="text" class="form-control" name="ruang" id="ruang" value="{{ $kp->ruang }}" autofocus required>

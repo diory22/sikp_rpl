@@ -141,7 +141,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                     <!--<li class="nav-item"> -->
-                    <a class="nav-link" aria-current="page" href="/mhs/logout">Logout</a>
+                    <a class="nav-link" aria-current="page" href="{{route('logout')}}">Logout</a>
                         <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('style/images/user.jpg') }}" alt="User">
                         </a>
@@ -237,13 +237,7 @@
                             <td>{{ $item->semester }}</td>
                             <td>{{ $item->lembaga }}</td>
                             <td>{{ $item->judul }}</td>
-                            <td>
-                                    @if ($item->status == 0)
-                                        Belum Disetujui
-                                    @else
-                                        Sudah Disetujui
-                                    @endif
-                                </td>
+                            <td>{{ $item->status}} </td> 
                             <td class="text-center">
                                 <a href="{{ url('kp/editkp/' .$item->id) }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-pencil"></i>

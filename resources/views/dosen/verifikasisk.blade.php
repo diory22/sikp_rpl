@@ -189,7 +189,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Verifikasi Pengajuan Pra KP</h1>
+                        <h1>Verifikasi Pengajuan Surat Keterangan</h1>
                     </div>
                 </div>
             </div>
@@ -207,50 +207,40 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
-            @if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
+            
             <div class="card">
                 <div class="card-header">
                     <div class="pull-left">
-                        <strong>Verifikasi Pengajuan Pra KP</strong>
+                        <strong>Verifikasi Pengajuan Surat Keterangan</strong>
                     </div>
-                    
+                    <div class="pull-right">
+                        <!--<a href="{{ url('mahasiswa/tambah') }}" class="btn btn-secondary btn-sm">
+                            <i class="fa fa-plus"></i> Add
+                        </a> -->
+                    </div>
                 </div>
-                <div class="card-body table responsive">
-                    <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>NIM</th>
-                        <th>Semester</th>
-                        <th>Judul</th>
-                       <th>Status</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($prakp as $item)
-                        <tr>
-                            <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->nim }}</td>
-                            <td>{{ $item->semester }}</td>
-                            <td>{{ $item->judul }}</td>
-                            <td>{{ $item->status}}<td>
-                            <a href="{{ url('prakp/verifikasi/' .$item->id) }}" class="btn btn-success btn-sm">
-                                    <i>Verifikasi</i>
-                                </a>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-4 offset-md-4">
+                        <form action="{{ url('dosensk/'.$sk->id) }}" method="post">
+                        @method('patch')
+                        @csrf
+        <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Status Verifikasi</label>
+                                    <select class="form-control" name="status" id="status">
+            <option value="Diterima">Diterima</option>
+            <option value="Ditolak">Ditolak</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        </form>
             </div>
             </div>
 
             </div>
         </div>
+
 
         
                     

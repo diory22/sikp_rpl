@@ -31,7 +31,7 @@ class MahasiswaController extends Controller
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
             'fax' => $request->fax,
-            'status' => 0
+            'status' => "Belum diverifikasi"
             //'dokumen' => $request->dokumen
         ]);
         return redirect('suratketerangan')->with('status', 'Berhasil ditambahkan!');
@@ -92,7 +92,7 @@ class MahasiswaController extends Controller
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
             'fax' => $request->fax,
-            'status' => 0
+            'status' => "Belum diverifikasi"
             //'dokumen' => $request->dokumen
         ]);
         return redirect('prakp')->with('status', 'Berhasil ditambahkan!');
@@ -158,7 +158,7 @@ class MahasiswaController extends Controller
             'fax' => $request->fax,
             //'penguji' => $request->penguji,
             //'dospem' ->$request->dospem,
-            'status' => 0
+            'status' => "Belum diverifikasi"
             //'dokumen' => $request->dokumen
         ]);
         return redirect('kp')->with('status', 'Berhasil ditambahkan!');
@@ -195,7 +195,7 @@ class MahasiswaController extends Controller
     } 
     public function tampilujian()
     {
-        $ujian = DB::table('kp')->where('status', '=', '1')->get();
+        $ujian = DB::table('kp')->where('status', 'Diterima')->get();
         return view('mahasiswa.ujian',['kp' => $ujian]);
     }
 }

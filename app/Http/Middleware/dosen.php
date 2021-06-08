@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CekLogin
+class dosen
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,6 @@ class CekLogin
         if (in_array($request->user()->level,$levels)){
             return $next($request);
         }
-        return redirect('/login');
+        return redirect('/logindosen');
     }
-
 }

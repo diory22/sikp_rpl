@@ -148,7 +148,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                     <!--<li class="nav-item"> -->
-                    <a class="nav-link" aria-current="page" href="/mhs/logout">Logout</a>
+                    <a class="nav-link" aria-current="page" href="{{route('logout1')}}">Logout</a>
                         <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('style/images/user.jpg') }}" alt="User">
                         </a>
@@ -227,6 +227,7 @@
                         <th>NIM</th>
                         <th>Judul KP</th>
                         <!--<th>Status</th> -->
+                        <th>Tgl Mulai KP</th>
                         <th>Tgl Batas KP</th>
                         <th>Aksi</th>
                       
@@ -250,7 +251,14 @@
                                     Sudah Disetujui
                                 @endif
                             </td> -->
-                           
+                            <td>
+                                @if($item->tgl_mulai != null)
+                                    <input type="date" class="form-control" name="tgl_mulai" value="{{ $item->tgl_mulai }}">
+                                @else
+                                    <input type="date" class="form-control" name="tgl_mulai">
+                                @endif
+                                <input type="hidden" class="form-control" name="id" value="{{ $item->id }}">
+                            </td> 
                             <td>
                                 @if($item->tgl_batas != null)
                                     <input type="date" class="form-control" name="tgl_batas" value="{{ $item->tgl_batas }}">

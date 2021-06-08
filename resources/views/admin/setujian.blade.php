@@ -36,25 +36,13 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                 <li>
-                        <a href="{{ url ('dosen') }}"></i>Dashboard </a>
+                        <a href="{{ url ('admin') }}"></i>Dashboard </a>
                     </li>
                     <li>
-                        <a href="{{ url ('dosen/suratketerangan') }}">Verifikasi Pengajuan Surat Keterangan</a>
+                        <a href="{{ url ('admin/dafbimbingan') }}">Daftar Bimbingan</a>
                     </li>
                     <li>
-                        <a href="{{ url ('dosen/prakp') }}">Verifikasi Pengajuan Pra KP </a>
-                    </li>
-                    <li>
-                        <a href="{{ url ('dosen/kp') }}">Verifikasi Pengajuan KP</a>
-                    </li>
-                    <li>
-                        <a href="{{ url ('dosen/ujian') }}">Jadwal Ujian</a>
-                    </li>
-                    <li>
-                        <a href="{{ url ('dosen/dafregis') }}">Daftar Registrasi </a>
-                    </li>
-                    <li>
-                        <a href="{{ url ('dosen/batas') }}">Batas Pelaksanaan KP </a>
+                        <a href="{{ url ('admin/jadwal') }}">Jadwal Ujian </a>
                     </li>
 
                     </ul>
@@ -148,7 +136,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                     <!--<li class="nav-item"> -->
-                    <a class="nav-link" aria-current="page" href="{{route('logout1')}}">Logout</a>
+                    <a class="nav-link" aria-current="page" href="{{route('logout2')}}">Logout</a>
                         <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('style/images/user.jpg') }}" alt="User">
                         </a>
@@ -189,7 +177,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Verifikasi Pengajuan Pra KP</h1>
+                        <h1>Set Pengajuan Ujian</h1>
                     </div>
                 </div>
             </div>
@@ -207,50 +195,40 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
-            @if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
+            
             <div class="card">
                 <div class="card-header">
                     <div class="pull-left">
-                        <strong>Verifikasi Pengajuan Pra KP</strong>
+                        <strong>Set Pengajuan Ujian</strong>
                     </div>
-                    
+                    <div class="pull-right">
+                        <!--<a href="{{ url('mahasiswa/tambah') }}" class="btn btn-secondary btn-sm">
+                            <i class="fa fa-plus"></i> Add
+                        </a> -->
+                    </div>
                 </div>
-                <div class="card-body table responsive">
-                    <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>NIM</th>
-                        <th>Semester</th>
-                        <th>Judul</th>
-                       <th>Status</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($prakp as $item)
-                        <tr>
-                            <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->nim }}</td>
-                            <td>{{ $item->semester }}</td>
-                            <td>{{ $item->judul }}</td>
-                            <td>{{ $item->status}}<td>
-                            <a href="{{ url('prakp/verifikasi/' .$item->id) }}" class="btn btn-success btn-sm">
-                                    <i>Verifikasi</i>
-                                </a>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-4 offset-md-4">
+                        <form action="{{ url('setujian/'.$kp->id) }}" method="post">
+                        @method('patch')
+                        @csrf
+        <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Status Ujian</label>
+                                    <select class="form-control" name="status_ujian" id="status_ujian">
+                                    <option value="Diterima">Diterima</option>
+            <option value="Ditolak">Ditolak</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        </form>
             </div>
             </div>
 
             </div>
         </div>
+
 
         
                     

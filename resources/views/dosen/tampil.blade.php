@@ -148,7 +148,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                     <!--<li class="nav-item"> -->
-                    <a class="nav-link" aria-current="page" href="/mhs/logout">Logout</a>
+                    <a class="nav-link" aria-current="page" href="{{route('logout1')}}">Logout</a>
                         <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('style/images/user.jpg') }}" alt="User">
                         </a>
@@ -241,6 +241,7 @@
                 </thead>
                 <tbody>
                     @foreach ($sk as $item)
+                    <!--<form action="/koor/prosessetjadwal"> -->
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->nim }}</td>
@@ -250,28 +251,11 @@
                             <td>{{ $item->no_telp }}</td>
                             <td>{{ $item->alamat }}</td>
                             <td>{{ $item->fax }}</td>
-                            <td>
-                                @if($item->status == 0)
-                                    Belum Disetujui
-                                @else
-                                    Sudah Disetujui
-                                @endif
-                            </td> 
-                            <td>
-                            @if($item->status == 0)
-                                <a href="{{ url('dosen/prosessetujuisk/' .$item->id) }}" class="btn btn-success btn-sm">Setuju
+                            <td>{{ $item->status}}<td>
+                            <a href="{{ url('suratketerangan/verifikasi/' .$item->id) }}" class="btn btn-success btn-sm">
+                                    <i>Verifikasi</i>
                                 </a>
-                            @else
-                            <a href="{{ url('dosen/prosesbatalsk/' .$item->id) }}" class="btn btn-danger btn-sm">Tidak setuju
-                                </a>
-                            @endif
-
-                                <!---@if($item->status == 0)
-                                    <a href="/dosen/prosessetujuisk/{{ $item->id }}" class="btn btn-success">Setujui</a>
-                                @else
-                                    <a href="/dosen/prosesbatalsk/{{ $item->id }}" class="btn btn-warning">Batalkan Persetujuan</a>
-                                @endif -->
-                            </td>
+                        
                         </tr>
                     @endforeach
                 </tbody>

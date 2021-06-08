@@ -136,7 +136,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                     <!--<li class="nav-item"> -->
-                    <a class="nav-link" aria-current="page" href="/mhs/logout">Logout</a>
+                    <a class="nav-link" aria-current="page" href="{{route('logout2')}}">Logout</a>
                         <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('style/images/user.jpg') }}" alt="User">
                         </a>
@@ -219,27 +219,24 @@
                         <th>NIM</th>
                         <th>Judul KP</th>
                         <th>Lembaga</th>
-                        <th>Tanggal Ujian</th>
-                       <!--<th>Status</th> -->
+                        <th>Status Ujian</th>
+                       
                         
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($kp as $item)
+                    <!--<form action="/admin/prosessetujian"> -->
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->nim }}</td>
                             <td>{{ $item->judul }}</td>
                             <td>{{ $item->lembaga }}</td>
-                            <td>{{ $item->tgl_ujian }}</td>
-                            <!--<td> 
-                                @if($item->status == 0)
-                                    Belum Disetujui
-                                @else
-                                    Sudah Disetujui
-                                @endif
-                            </td> -->
-                            <!--<td>{{ $item->status }}</td> -->
+                            <td>{{$item->status_ujian}}<td>
+                            <a href="{{ url('set/ujian/' .$item->id) }}" class="btn btn-success btn-sm">
+                                    <i>Set Pengajuan Ujian KP</i>
+                                </a>
+                            
                         </tr>
                     @endforeach
                 </tbody>
