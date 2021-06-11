@@ -142,39 +142,8 @@
                     <div class="user-area dropdown float-right">
                     <!--<li class="nav-item"> -->
                     <a class="nav-link" aria-current="page" href="{{route('logout')}}">Logout</a>
-                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="{{ asset('style/images/user.jpg') }}" alt="User">
-                        </a>
-
-                        <div class="user-menu dropdown-menu">
-
-                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a> -->
                         </div>
                     </div>
-
-                    <!--<div class="language-select dropdown" id="language-select">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-                            <i class="flag-icon flag-icon-us"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="language" >
-                            <div class="dropdown-item">
-                                <span class="flag-icon flag-icon-fr"></span>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-es"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-us"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-it"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div> -->
-
         </header><!-- /header -->
         <!-- Header-->
 
@@ -190,8 +159,6 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <!-- <li><a href="#">Dashboard</a></li> -->
-                            
                         </ol>
                     </div>
                 </div>
@@ -210,11 +177,6 @@
                     <div class="pull-left">
                         <strong>Daftar Ujian</strong>
                     </div>
-                    <!--<div class="pull-right">
-                        <a href="{{ url('suratketerangan/tambah') }}" class="btn btn-success btn-sm">
-                            <i class="fa fa-plus"></i> Add
-                        </a>
-                    </div> -->
                 </div>
                 <div class="card-body table responsive">
                     <table class="table table-bordered">
@@ -227,9 +189,6 @@
                         <th>Dosen Pembimbing</th>
                         <th>Penguji</th>
                         <th>Tgl Ujian</th>
-                      
-                       
-                        
                     </tr>
                 </thead>
                 <tbody>
@@ -244,43 +203,17 @@
                             <td>
                                     {{$item->tgl_ujian }}
                                 </td>
-                            <!--<td>{{ $item->tgl_ujian}}</td> -->
-                            
-                            <!--<td class="text-center">
-                                <a href="{{ url('suratketerangan/edit/' .$item->id) }}" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <form action="{{ url('suratketerangan/' .$item->id) }}" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
-                                    @method('delete')
-                                    @csrf
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i>
-                                </button> -->
                         </tr> 
                     @endforeach
                 </tbody>
             </table>
             </div>
             </div>
-
             </div>
         </div>
-
-        
-                    
-
-          
             </div><!-- .animated -->
         </div><!-- .content -->
-
-
     </div><!-- /#right-panel -->
-
     <!-- Right Panel -->
-
-
-    
-
-
 </body>
 </html>

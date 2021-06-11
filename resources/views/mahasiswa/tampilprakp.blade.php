@@ -190,8 +190,6 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <!-- <li><a href="#">Dashboard</a></li> -->
-                            
                         </ol>
                     </div>
                 </div>
@@ -225,7 +223,6 @@
                         <th>Semester</th>
                         <th>Lembaga</th>
                         <th>Judul</th>
-                        <!--<th>Pembimbing</th> -->
                        <th>Status</th>
                         
                     </tr>
@@ -255,25 +252,11 @@
             </table>
             </div>
             </div>
-
             </div>
         </div>
-
-        
-                    
-
-          
             </div><!-- .animated -->
         </div><!-- .content -->
-
-
     </div><!-- /#right-panel -->
-
     <!-- Right Panel -->
-
-
-    
-
-
 </body>
 </html>
